@@ -75,11 +75,18 @@ class _OnboardingpageState extends State<Onboardingpage> {
                 );
               },
               child: onbordingProvider.currentPage == totalPages -1
-              ? ElevatedButton(
-                onPressed: () {
-                  Navigator.pushReplacementNamed(context, AppRoute.home);
-                }, 
-                child: Text('شروع رزرو هتل ها'))
+              ? Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                child: SizedBox(
+                  width: double.infinity,
+                  height: 50,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.pushReplacementNamed(context, AppRoute.home);
+                    }, 
+                    child: Text('شروع رزرو هتل ها')),
+                ),
+              )
                 : null
             )
           ]
