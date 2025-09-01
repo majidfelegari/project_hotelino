@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hotelino/routes/test.dart';
 import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 
@@ -25,6 +26,19 @@ class _MainBottonNavState extends State<MainBottonNav> {
       FovoritePage(),
       BookingPage(),
       ProfilePage(),
+    ];
+  }
+
+  List<PersistentBottomNavBarItem> _navBarsItems(){
+    return [
+      PersistentBottomNavBarItem(
+        icon: SvgPicture.asset(
+          "assets/images/hav_home.svg",
+          width: 20,
+          height: 20,
+          colorFilter: ColorFilter.mode(Colors.white, BlendMode.srcIn),
+        )
+      ),
     ];
   }
   
