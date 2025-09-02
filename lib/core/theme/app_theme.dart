@@ -205,7 +205,6 @@ class AppTheme {
       colorScheme: baseDark.colorScheme.copyWith(
         outline: Colors.grey[500],
         primaryFixed: AppColors.primary,
-        surfaceContainerLow: Colors.grey[200]
       )
     );
   }
