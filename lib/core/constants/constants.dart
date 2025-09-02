@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:hotelino/features/home/data/models/homepage_data.dart';
 
 class AppConstants {
-  static const String baseUrlImage = "https://dunijet.ir/content/projects/hotelino";
+  static const String baseUrlImage = "https://dunijet.ir/content/projects/hotelino/";
   static const String hotelsData = "assets/data/hotels.json";
 }
 
