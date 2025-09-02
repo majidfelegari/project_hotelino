@@ -35,10 +35,65 @@ class HotelCard extends StatelessWidget {
                       SizedBox(height: 8,),
                       Icon(Icons.star, color: Colors.amber, size: 20,),
                       SizedBox(width: 4,),
-                      Text("${hotel.rating} (${formatPrice(hotel.reviewCount)})"),
+                      Text("${hotel.rating} (${formatPrice(hotel.reviewCount)})",
+                      style: TextStyle(fontWeight: FontWeight.bold),),
+                      Spacer(),
+                      Text(
+                        hotel.name,
+                        style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                      ),
+                      SizedBox(
+                        width: 8,
+                      )
                     ],
-
-                  )
+                  ),
+                  SizedBox(
+                    height: 8,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      SizedBox(
+                        height: 8,
+                      ),
+                      Text(
+                        "${hotel.city}, ${hotel.country}" , style: TextStyle(color: Colors.grey),
+                      ),
+                      SizedBox(
+                        width: 4,
+                      ),
+                      Icon(Icons.location_on,
+                      color: Theme.of(context).colorScheme.primary,
+                      size: 18,),
+                      SizedBox(
+                        width: 8,
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 8,),
+                  Padding(
+                    padding: EdgeInsets.only(right: 8),
+                    child: Text(
+                      "از ${formatPrice(hotel.pricePerNight)} / شب",
+                      style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                  SizedBox(height: 8,),
+                  Padding(
+                    padding: EdgeInsets.only(right: 8, left: 8),
+                    child: SizedBox(
+                      width: double.infinity,
+                      child: ElevatedButton(onPressed: () {
+                        
+                      },
+                      child: Text(
+                        'مشاهده و انتخاب اتاق',
+                        style: TextStyle(color: Colors.white),
+                      )),
+                    ),
+                  ),
+                  SizedBox(height: 8,)
+                
                 ],
               ),
             )
