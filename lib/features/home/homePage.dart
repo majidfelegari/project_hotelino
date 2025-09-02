@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hotelino/features/home/presentation/provider/home_provider.dart';
 import 'package:hotelino/features/home/presentation/widgets/ad_banner.dart';
 import 'package:hotelino/features/home/presentation/widgets/home_appbar.dart';
+import 'package:hotelino/features/home/presentation/widgets/hotel_list_section.dart';
 import 'package:hotelino/features/home/presentation/widgets/search_bar.dart';
 import 'package:provider/provider.dart';
 
@@ -10,13 +11,13 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final homeProvider = Provider.of<HomeProvider>(context);
+    // final homeProvider = Provider.of<HomeProvider>(context);
     return Scaffold(
       appBar: HomeAppBar(),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
-          children: const [
+          children:[
             SizedBox(
               height: 16,
             ),
@@ -25,6 +26,14 @@ class HomePage extends StatelessWidget {
               height: 16,
             ),
             AdBanner(),
+            Consumer<HomeProvider>(
+              builder: (context, homeprovider, child) {
+                return HotelListSection(
+                  title: 'محبوبترین هتل ها', 
+                  hotels: homeprovider.getPopularHotels(),
+                  onSeeAllPressed: () {},);
+              },
+            )
           ],
         ),
 
