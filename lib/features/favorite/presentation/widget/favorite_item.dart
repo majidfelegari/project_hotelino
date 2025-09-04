@@ -3,10 +3,11 @@ import 'package:hotelino/core/utils/network.dart';
 import 'package:hotelino/core/utils/price_formatter.dart';
 import 'package:hotelino/features/home/data/models/hotel.dart';
 
-class HotelCardVertical extends StatelessWidget {
+class FavoriteHotelCard extends StatelessWidget {
   final Hotel hotel;
+  Function onRemoveFavoriteClicked;
 
-  const HotelCardVertical({Key? key, required this.hotel}) : super(key: key);
+  FavoriteHotelCard({super.key, required this.hotel, required this.onRemoveFavoriteClicked});
 
   @override
   Widget build(BuildContext context) {
@@ -17,40 +18,44 @@ class HotelCardVertical extends StatelessWidget {
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           if (Theme.of(context).brightness == Brightness.light)
-          BoxShadow(
-            color: Colors.grey.shade300,
-            blurRadius: 6,
-            spreadRadius: 2,
-          )
+            BoxShadow(
+              color: Colors.grey.shade300,
+              blurRadius: 6,
+              spreadRadius: 2
+            )
           else
-          BoxShadow(
-            color: Theme.of(context).colorScheme.surfaceContainerHigh.withValues(alpha: 1),
-            blurRadius: 6,
-            spreadRadius: 2,
-          )
+            BoxShadow(
+              color: Theme.of(context).colorScheme.surfaceContainerHigh.withValues(alpha: 1),
+              blurRadius: 6,
+              spreadRadius: 2
+            )
         ]
       ),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.end,
+
+      child: Stack(
         children: [
-          Padding(
-            padding: const EdgeInsets.only(left: 12, bottom: 12),
-            child: ElevatedButton(
-              onPressed: () {
-                
-              },
-              child: const Text("رزرو اتاق", style: TextStyle(color: Colors.white)),
-            ),
-          ),
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.all(12),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  const SizedBox(height: 4,),
-                  Text(hotel.name, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
-                  const SizedBox(height: 4,),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(left: 12, bottom: 12),
+                child: ElevatedButton(
+                  onPressed: () {
+                    
+                  },
+                  child: const Text("رزرو اتاق", style: TextStyle(color: Colors.white),),
+                ),
+              ),
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.all(12),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      const SizedBox(height: 4,),
+                      Text(hotel.name, style: const TextStyle(fontWeight: FontWeight.bold,
+                      fontSize: 16),),
+                      const SizedBox(height: 4,),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
@@ -75,11 +80,11 @@ class HotelCardVertical extends StatelessWidget {
                   const SizedBox(height: 4,),
                   Text("از ${formatPrice(hotel.pricePerNight)} / شب"),
                   const SizedBox(height: 4,),
-                ],
+                    ],
+                  ),
+                ),
               ),
-            ),
-          ),
-          ClipRRect(
+              ClipRRect(
             borderRadius: const BorderRadius.only(
               topRight: Radius.circular(15),
               bottomRight: Radius.circular(15),
@@ -89,6 +94,20 @@ class HotelCardVertical extends StatelessWidget {
               width: 100,
               height: double.infinity,
               fit: BoxFit.cover,
+            ),
+          )
+            ],
+          ),
+          Positioned(
+            left: 16,
+            top: 16,
+            child: GestureDetector(
+              onTap: () => onRemoveFavoriteClicked(hotel.id),
+              child: const Icon(
+                Icons.favorite,
+                size: 24,
+                color: Colors.red,
+              ),
             ),
           )
         ],
