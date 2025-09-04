@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:hotelino/features/booking/presentation/booking_provider.dart';
+import 'package:provider/provider.dart';
 
 class BookingPage extends StatefulWidget {
   const BookingPage({super.key});
@@ -21,6 +23,30 @@ class _BookingPageState extends State<BookingPage> {
   }
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        title: Text('فرم رزرو هتل', style: Theme.of(context).textTheme.headlineMedium),
+      ),
+      body: Padding(padding: const EdgeInsets.all(16),
+      child: SingleChildScrollView(
+        child: Consumer<BookingProvider>(
+          builder: (BuildContext context, BookingProvider bookingProvider, Widget? child) { 
+            return Form(
+              key: _formKey,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  
+                ],
+              ),
+            );
+           },
+
+        ),
+      ), 
+        
+      ),
+    );
   }
 }
