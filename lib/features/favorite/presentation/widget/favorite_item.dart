@@ -5,7 +5,7 @@ import 'package:hotelino/features/home/data/models/hotel.dart';
 
 class FavoriteHotelCard extends StatelessWidget {
   final Hotel hotel;
-  Function onRemoveFavoriteClicked;
+  Function (String) onRemoveFavoriteClicked;
 
   FavoriteHotelCard({super.key, required this.hotel, required this.onRemoveFavoriteClicked});
 
