@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hotelino/bootstrap.dart';
 import 'package:hotelino/core/theme/app_theme.dart';
 import 'package:hotelino/core/theme/theme_provider.dart';
+import 'package:hotelino/features/booking/presentation/booking_provider.dart';
 import 'package:hotelino/features/home/presentation/provider/favorite_item_provider.dart';
 import 'package:hotelino/features/home/presentation/provider/home_provider.dart';
 import 'package:hotelino/features/home/presentation/provider/profile_provider.dart';
@@ -32,6 +33,7 @@ void main() async{
       ChangeNotifierProvider(create: (_) => HomeProvider(hotelRepository)),
       ChangeNotifierProvider(create: (_) => ProfileProvider(ProfileRepository(), hotelRepository)),
       ChangeNotifierProvider(create: (_) => FavoriteItemProvider(hotelRepository)),
+      ChangeNotifierProvider(create: (_) => BookingProvider()),
     ],
     child: const MyApp(),
   ));
