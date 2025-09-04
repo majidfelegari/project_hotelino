@@ -100,6 +100,10 @@ class AppTheme {
         outline: Colors.grey[500],
         primaryFixed: AppColors.primary,
         surfaceContainerLow: Colors.grey[200]
+      ),
+
+      inputDecorationTheme: baseLight.inputDecorationTheme.copyWith(
+        fillColor: baseLight.colorScheme.surface
       )
     );
   }
@@ -205,6 +209,9 @@ class AppTheme {
       colorScheme: baseDark.colorScheme.copyWith(
         outline: Colors.grey[500],
         primaryFixed: AppColors.primary,
+      ),
+      inputDecorationTheme: baseDark.inputDecorationTheme.copyWith(
+        fillColor: baseDark.colorScheme.surface
       )
     );
   }
