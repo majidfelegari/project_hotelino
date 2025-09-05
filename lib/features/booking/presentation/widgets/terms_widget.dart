@@ -64,23 +64,27 @@ class _TermsWidgetState extends State<TermsWidget> {
                     textDirection: TextDirection.rtl,
                   ),
                 ),
-                Checkbox(
-                  value: isChecked,
-                  onChanged: (value) {
-                    setState(() {
-                      isChecked = value ?? false;
-                    });
-                  },
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(6),
+                Padding(
+                  padding: const EdgeInsets.only(top: 8),
+                  child: Checkbox(
+                    value: isChecked,
                     side: BorderSide(
-                      color: field.hasError
-                          ? Theme.of(field.context).colorScheme.error
-                          : Theme.of(field.context).colorScheme.primary,
+                        color: field.hasError
+                            ? Theme.of(field.context).colorScheme.error
+                            : Theme.of(field.context).colorScheme.primary,
+                          width: field.hasError ? 1 : 1.5,
+                      ),
+                    onChanged: (value) {
+                      setState(() {
+                        isChecked = value ?? false;
+                      });
+                    },
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(6),
                     ),
+                    activeColor: Theme.of(context).colorScheme.primary,
+                    visualDensity: VisualDensity(horizontal: -4, vertical: -4),
                   ),
-                  activeColor: Theme.of(context).colorScheme.primary,
-                  visualDensity: VisualDensity(horizontal: -4),
                 ),
               ],
             ),
