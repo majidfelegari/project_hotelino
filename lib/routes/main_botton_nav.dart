@@ -107,6 +107,11 @@ class _MainBottonNavState extends State<MainBottonNav> {
       screens: _buildScreens(),
       items: _navBarsItems(),
       onItemSelected: (index) {
+        if (index != 2) {
+          //reset form ob booking page
+          BookingPage.bookingPageKey.currentState?.resetForm();
+        }
+
         unfocusEditors(context);
       },
       backgroundColor: Theme.of(context).colorScheme.surface,
