@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hotelino/core/constants/constants.dart';
 
 class TermsWidget extends StatefulWidget {
   static final GlobalKey<_TermsWidgetState> termsKey =
@@ -37,43 +38,47 @@ class _TermsWidgetState extends State<TermsWidget> {
         return Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                GestureDetector(
-                  onTap: () {
-                    _showTermsDialog(context);
-                  },
-                  child: RichText(
-                    text: TextSpan(
-                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                        color: Colors.grey.shade700,
-                      ),
-                      children: [
-                        TextSpan(text: "قوانین برنامه"),
-                        TextSpan(
-                          text: "هتلینو",
-                          style: TextStyle(
-                            fontWeight: FontWeight.w600,
-                            color: Theme.of(context).colorScheme.primary,
-                          ),
+            Padding(
+              padding: const EdgeInsets.only(top: 8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  GestureDetector(
+                    onTap: () {
+                      _showTermsDialog(context);
+                    },
+                    child: RichText(
+                      text: TextSpan(
+                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                          color: Colors.grey.shade700,
                         ),
-                        TextSpan(text: "را خوانده و آنها را میپذیرم."),
-                      ],
+                        children: [
+                          TextSpan(text: "قوانین برنامه"),
+                          TextSpan(
+                            text: "هتلینو",
+                            style: TextStyle(
+                              fontWeight: FontWeight.w600,
+                              color: Theme.of(context).colorScheme.primary,
+                            ),
+                          ),
+                          TextSpan(text: "را خوانده و آنها را میپذیرم."),
+                        ],
+                      ),
+                      textDirection: TextDirection.rtl,
                     ),
-                    textDirection: TextDirection.rtl,
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 8),
-                  child: Checkbox(
+                  Checkbox(
                     value: isChecked,
                     side: BorderSide(
-                        color: field.hasError
-                            ? Theme.of(field.context).colorScheme.error
-                            : Theme.of(field.context).colorScheme.primary,
-                          width: field.hasError ? 1 : 1.5,
-                      ),
+                      color: field.hasError
+                          ? isChecked
+                                ? Theme.of(context).colorScheme.primary
+                                : Theme.of(field.context).colorScheme.error
+                          : isChecked
+                          ? Theme.of(context).colorScheme.primary
+                          : AppColors.lightBorder,
+                      width: field.hasError ? 1 : 2,
+                    ),
                     onChanged: (value) {
                       setState(() {
                         isChecked = value ?? false;
@@ -85,8 +90,8 @@ class _TermsWidgetState extends State<TermsWidget> {
                     activeColor: Theme.of(context).colorScheme.primary,
                     visualDensity: VisualDensity(horizontal: -4, vertical: -4),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
 
             if (field.hasError)
@@ -94,7 +99,10 @@ class _TermsWidgetState extends State<TermsWidget> {
                 padding: const EdgeInsets.only(top: 8, right: 12),
                 child: Text(
                   field.errorText ?? '',
-                  style: TextStyle(color: Theme.of(context).colorScheme.error, fontSize: 12),
+                  style: TextStyle(
+                    color: Theme.of(context).colorScheme.error,
+                    fontSize: 12,
+                  ),
                 ),
               ),
           ],
