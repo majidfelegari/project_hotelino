@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hotelino/core/constants/constants.dart';
+import 'package:hotelino/core/utils/kyboard.dart';
 
 class TermsWidget extends StatefulWidget {
   static final GlobalKey<_TermsWidgetState> termsKey =
@@ -123,6 +124,7 @@ class _TermsWidgetState extends State<TermsWidget> {
   }
 
   void _showTermsDialog(BuildContext context) {
+    unfocusEditors(context);
     showModalBottomSheet(
       context: context,
       builder: (context) {
