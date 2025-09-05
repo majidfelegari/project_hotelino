@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:hotelino/features/home/presentation/provider/profile_provider.dart';
+import 'package:hotelino/features/profile/presentation/widgets/profile_options_item.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 
@@ -26,6 +27,12 @@ class _ProfilePageState extends State<ProfilePage> {
     }
   }
 
+  void _showSnackbar(BuildContext context, String message) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text(message, textDirection: TextDirection.rtl)),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Consumer<ProfileProvider>(
@@ -37,57 +44,92 @@ class _ProfilePageState extends State<ProfilePage> {
         }
 
         return Scaffold(
-          body: SafeArea(child: SingleChildScrollView(
-            child: Column(
-              children: [
-                const SizedBox(
-                  height: 24,
-                ),
-                Stack(
-                  children: [
-                    CircleAvatar(
-                      radius: 55,
-                      backgroundImage: _image != null
-                      ? FileImage(_image!)
-                      : NetworkImage(profile.avatarUrl) as ImageProvider,
-                    ),
-                    Positioned(
-                      right: 0,
-                      bottom: 0,
-                      child: GestureDetector(
-                        onTap: _pickImage,
-                        child: Container(
-                          padding: EdgeInsets.all(6),
-                          decoration: BoxDecoration(
-                            color: Theme.of(context).colorScheme.primaryFixed,
-                            shape: BoxShape.circle
-                          ),
-                          child: Icon(
-                            Icons.edit,
-                            size: 18,
-                            color: Colors.white,
+          body: SafeArea(
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  const SizedBox(height: 24),
+                  Stack(
+                    children: [
+                      CircleAvatar(
+                        radius: 55,
+                        backgroundImage: _image != null
+                            ? FileImage(_image!)
+                            : NetworkImage(profile.avatarUrl) as ImageProvider,
+                      ),
+                      Positioned(
+                        right: 0,
+                        bottom: 0,
+                        child: GestureDetector(
+                          onTap: _pickImage,
+                          child: Container(
+                            padding: EdgeInsets.all(6),
+                            decoration: BoxDecoration(
+                              color: Theme.of(context).colorScheme.primaryFixed,
+                              shape: BoxShape.circle,
+                            ),
+                            child: Icon(
+                              Icons.edit,
+                              size: 18,
+                              color: Colors.white,
+                            ),
                           ),
                         ),
                       ),
-                    )
-                  ],
-                ),
-                SizedBox(height: 12,),
-                Text(
-                  profile.name,
-                  style: Theme.of(context).textTheme.headlineMedium,
-                ),
-                SizedBox(height: 4,),
-                Text(
-                  profile.email,
-                  style: Theme.of(context).textTheme.headlineSmall!.copyWith(color: Colors.grey),
-                ),
-                SizedBox(
-                  height: 24,
-                ),
-              ],
+                    ],
+                  ),
+                  SizedBox(height: 12),
+                  Text(
+                    profile.name,
+                    style: Theme.of(context).textTheme.headlineMedium,
+                  ),
+                  SizedBox(height: 4),
+                  Text(
+                    profile.email,
+                    style: Theme.of(
+                      context,
+                    ).textTheme.headlineSmall!.copyWith(color: Colors.grey),
+                  ),
+                  SizedBox(height: 24),
+                  ProfileOptionsItem(
+                    title: "اطلاعات صفحه کاربری",
+                    icon: Icons.person_outline,
+                    onTap: () =>
+                        _showSnackbar(context, "مشاهده اطلاعات صفحه کاربری"),
+                  ),
+                  ProfileOptionsItem(
+                    title: "اعلان ها",
+                    icon: Icons.notifications_outlined,
+                    onTap: () => _showSnackbar(context, "مشاهده اعلان ها"),
+                  ),
+                  ProfileOptionsItem(
+                    title: "لیست مورد علاقه ها",
+                    icon: Icons.favorite_outline,
+                    onTap: () =>
+                        _showSnackbar(context, "مشاهده لیست علاقه مندی ها"),
+                  ),
+                  ProfileOptionsItem(
+                    title: "فراموشی رمز عبور",
+                    icon: Icons.key_outlined,
+                    onTap: () =>
+                        _showSnackbar(context, "تغییر یا بازیابی رمز عبور"),
+                  ),
+                  ProfileOptionsItem(
+                    title: "روش های پرداخت",
+                    icon: Icons.credit_card_outlined,
+                    onTap: () =>
+                        _showSnackbar(context, "مشاهده روش های پرداخت"),
+                  ),
+                  ProfileOptionsItem(
+                    title: "تنظیمات",
+                    icon: Icons.settings_outlined,
+                    onTap: () =>
+                        _showSnackbar(context, "تنظیمات پروفایل کاربری"),
+                  ),
+                ],
+              ),
             ),
-          )),
+          ),
         );
       },
     );
