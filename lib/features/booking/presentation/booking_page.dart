@@ -3,11 +3,12 @@ import 'package:hotelino/features/booking/presentation/booking_provider.dart';
 import 'package:hotelino/features/booking/presentation/widgets/booking_form_field.dart';
 import 'package:hotelino/features/booking/presentation/widgets/date_picker_field.dart';
 import 'package:hotelino/features/booking/presentation/widgets/number_text_field.dart';
+import 'package:hotelino/features/booking/presentation/widgets/terms_widget.dart';
 import 'package:provider/provider.dart';
 
 class BookingPage extends StatefulWidget {
   static final GlobalKey<BookingPageState> bookingPageKey = GlobalKey<BookingPageState>();
-  BookingPage({super.key});
+  BookingPage({Key? key}) : super(key: bookingPageKey);
 
   @override
   State<BookingPage> createState() => BookingPageState();
@@ -124,6 +125,7 @@ class BookingPageState extends State<BookingPage> {
                       }
                     },
                     ),
+                    TermsWidget(),
                 ],
               ),
             );
