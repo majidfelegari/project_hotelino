@@ -5,7 +5,8 @@ import 'package:hotelino/core/utils/kyboard.dart';
 import 'package:hotelino/features/booking/presentation/booking_page.dart';
 import 'package:hotelino/features/favorite/presentation/favorite_page.dart';
 import 'package:hotelino/features/home/presentation/homePage.dart';
-import 'package:hotelino/routes/test.dart';
+import 'package:hotelino/features/profile/presentation/profile_page.dart';
+
 import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 
 class MainBottonNav extends StatefulWidget {
