@@ -8,7 +8,7 @@ class NumberFormField extends StatefulWidget {
 
   final String initialValue;
   final FormFieldValidator<String>? validator;
-  final FormFieldSetter<String>? onSaved;
+  final FormFieldSetter<String>? onSaved; 
 
   NumberFormField({
     required this.initialValue,
