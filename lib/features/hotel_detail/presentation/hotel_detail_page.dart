@@ -213,6 +213,23 @@ class HotelDetailPage extends StatelessWidget {
                         overflow: TextOverflow.ellipsis,
                         maxLines: 8,
                       ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          TextButton(onPressed: () {
+                            
+                          }, 
+                          child: Text(
+                            "تمام صفحه",
+                            textDirection: TextDirection.rtl,
+                          )),
+                          Text(
+                            "موقعیت مکانی هتل روی نقشه",
+                            style: textTheme.headlineSmall,
+                            textDirection: TextDirection.rtl,
+                          )
+                        ],
+                      )
                     ],
                   ),
                 ),
