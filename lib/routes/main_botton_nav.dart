@@ -5,7 +5,8 @@ import 'package:hotelino/core/utils/kyboard.dart';
 import 'package:hotelino/features/booking/presentation/booking_page.dart';
 import 'package:hotelino/features/favorite/presentation/favorite_page.dart';
 import 'package:hotelino/features/home/presentation/homePage.dart';
-import 'package:hotelino/routes/test.dart';
+import 'package:hotelino/features/profile/presentation/profile_page.dart';
+
 import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 
 class MainBottonNav extends StatefulWidget {
@@ -45,7 +46,7 @@ class _MainBottonNavState extends State<MainBottonNav> {
         ),
         activeColorPrimary: AppColors.primary,
         inactiveIcon: SvgPicture.asset(
-          "asstes/images/nav_home.svg",
+          "assets/images/nav_home.svg",
           width: 20,
           height: 20,
           colorFilter: ColorFilter.mode(Colors.grey, BlendMode.srcIn),
@@ -60,7 +61,7 @@ class _MainBottonNavState extends State<MainBottonNav> {
         ),
         activeColorPrimary: AppColors.primary,
         inactiveIcon: SvgPicture.asset(
-          "asstes/images/nav_favorite.svg",
+          "assets/images/nav_favorite.svg",
           width: 20,
           height: 20,
           colorFilter: ColorFilter.mode(Colors.grey, BlendMode.srcIn),
@@ -75,7 +76,7 @@ class _MainBottonNavState extends State<MainBottonNav> {
         ),
         activeColorPrimary: AppColors.primary,
         inactiveIcon: SvgPicture.asset(
-          "asstes/images/nav_booking.svg",
+          "assets/images/nav_booking.svg",
           width: 20,
           height: 20,
           colorFilter: ColorFilter.mode(Colors.grey, BlendMode.srcIn),
@@ -90,7 +91,7 @@ class _MainBottonNavState extends State<MainBottonNav> {
         ),
         activeColorPrimary: AppColors.primary,
         inactiveIcon: SvgPicture.asset(
-          "asstes/images/nav_profile.svg",
+          "assets/images/nav_profile.svg",
           width: 20,
           height: 20,
           colorFilter: ColorFilter.mode(Colors.grey, BlendMode.srcIn),
@@ -107,6 +108,11 @@ class _MainBottonNavState extends State<MainBottonNav> {
       screens: _buildScreens(),
       items: _navBarsItems(),
       onItemSelected: (index) {
+        if (index != 2) {
+          //reset form ob booking page
+          BookingPage.bookingPageKey.currentState?.resetForm();
+        }
+
         unfocusEditors(context);
       },
       backgroundColor: Theme.of(context).colorScheme.surface,
