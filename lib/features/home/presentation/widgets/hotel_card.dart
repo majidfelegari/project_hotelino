@@ -19,14 +19,14 @@ class HotelCard extends StatelessWidget {
     final isFavorite = favoriteProvider.isFavorite(hotel.id);
 
     return GestureDetector(
-      onTap: () {
-        PersistentNavBarNavigator.pushNewScreen(
-          context,
-          withNavBar: true,
-          screen: HotelDetailPage(hotelId: hotel.id),
-          pageTransitionAnimation: PageTransitionAnimation.cupertino,
-        );
-      },
+      // onTap: () {
+      //   PersistentNavBarNavigator.pushNewScreen(
+      //     context,
+      //     withNavBar: true,
+      //     screen: HotelDetailPage(hotelId: hotel.id),
+      //     pageTransitionAnimation: PageTransitionAnimation.cupertino,
+      //   );
+      // },
       child: SizedBox(
         width: 280,
         child: Card(
@@ -38,7 +38,10 @@ class HotelCard extends StatelessWidget {
               Stack(
                 children: [
                   ClipRRect(
-                    borderRadius: BorderRadius.only(topLeft: Radius.circular(16), topRight: Radius.circular(16)),
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(16),
+                      topRight: Radius.circular(16),
+                    ),
                     child: Image.network(
                       networkUrl(hotel.images[0]),
                       height: 200,
@@ -55,81 +58,92 @@ class HotelCard extends StatelessWidget {
                         favoriteProvider.toggleFavorite(hotel.id);
                       },
                     ),
-                  )
+                  ),
                 ],
               ),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
-                    SizedBox(height: 8,),
+                    SizedBox(height: 8),
                     Row(
                       children: [
-                        SizedBox(height: 8,),
-                        Icon(Icons.star, color: Colors.amber, size: 20,),
-                        SizedBox(width: 4,),
-                        Text("${hotel.rating} (${formatPrice(hotel.reviewCount)})",
-                        style: TextStyle(fontWeight: FontWeight.bold),),
+                        SizedBox(height: 8),
+                        Icon(Icons.star, color: Colors.amber, size: 20),
+                        SizedBox(width: 4),
+                        Text(
+                          "${hotel.rating} (${formatPrice(hotel.reviewCount)})",
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
                         Spacer(),
                         Text(
                           hotel.name,
-                          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
-                        SizedBox(
-                          width: 8,
-                        )
+                        SizedBox(width: 8),
                       ],
                     ),
-                    SizedBox(
-                      height: 8,
-                    ),
+                    SizedBox(height: 8),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        SizedBox(
-                          height: 8,
-                        ),
+                        SizedBox(height: 8),
                         Text(
-                          "${hotel.city}, ${hotel.country}" , style: TextStyle(color: Colors.grey),
+                          "${hotel.city}, ${hotel.country}",
+                          style: TextStyle(color: Colors.grey),
                         ),
-                        SizedBox(
-                          width: 4,
+                        SizedBox(width: 4),
+                        Icon(
+                          Icons.location_on,
+                          color: Theme.of(context).colorScheme.primary,
+                          size: 18,
                         ),
-                        Icon(Icons.location_on,
-                        color: Theme.of(context).colorScheme.primary,
-                        size: 18,),
-                        SizedBox(
-                          width: 8,
-                        ),
+                        SizedBox(width: 8),
                       ],
                     ),
-                    SizedBox(height: 8,),
+                    SizedBox(height: 8),
                     Padding(
                       padding: EdgeInsets.only(right: 8),
                       child: Text(
                         "از ${formatPrice(hotel.pricePerNight)} / شب",
-                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
-                    SizedBox(height: 8,),
+                    SizedBox(height: 8),
                     Padding(
                       padding: EdgeInsets.only(right: 8, left: 8),
                       child: SizedBox(
                         width: double.infinity,
-                        child: ElevatedButton(onPressed: () {
-                          
-                        },
-                        child: Text(
-                          'مشاهده و انتخاب اتاق',
-                          style: TextStyle(color: Colors.white),
-                        )),
+                        child: ElevatedButton(
+                          onPressed: () {},
+                          child: TextButton(
+                            child: Text(
+                              'مشاهده و انتخاب اتاق',
+                              style: TextStyle(color: Colors.white),
+                            ),
+                            onPressed: () {
+                              PersistentNavBarNavigator.pushNewScreen(
+                                context,
+                                withNavBar: true,
+                                screen: HotelDetailPage(hotelId: hotel.id),
+                                pageTransitionAnimation:
+                                    PageTransitionAnimation.cupertino,
+                              );
+                            },
+                          ),
+                        ),
                       ),
                     ),
-                    SizedBox(height: 8,)
-                  
+                    SizedBox(height: 8),
                   ],
                 ),
-              )
+              ),
             ],
           ),
         ),
