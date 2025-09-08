@@ -46,7 +46,7 @@ class _MainBottonNavState extends State<MainBottonNav> {
         ),
         activeColorPrimary: AppColors.primary,
         inactiveIcon: SvgPicture.asset(
-          "asstes/images/nav_home.svg",
+          "assets/images/nav_home.svg",
           width: 20,
           height: 20,
           colorFilter: ColorFilter.mode(Colors.grey, BlendMode.srcIn),
@@ -61,7 +61,7 @@ class _MainBottonNavState extends State<MainBottonNav> {
         ),
         activeColorPrimary: AppColors.primary,
         inactiveIcon: SvgPicture.asset(
-          "asstes/images/nav_favorite.svg",
+          "assets/images/nav_favorite.svg",
           width: 20,
           height: 20,
           colorFilter: ColorFilter.mode(Colors.grey, BlendMode.srcIn),
@@ -76,7 +76,7 @@ class _MainBottonNavState extends State<MainBottonNav> {
         ),
         activeColorPrimary: AppColors.primary,
         inactiveIcon: SvgPicture.asset(
-          "asstes/images/nav_booking.svg",
+          "assets/images/nav_booking.svg",
           width: 20,
           height: 20,
           colorFilter: ColorFilter.mode(Colors.grey, BlendMode.srcIn),
@@ -91,7 +91,7 @@ class _MainBottonNavState extends State<MainBottonNav> {
         ),
         activeColorPrimary: AppColors.primary,
         inactiveIcon: SvgPicture.asset(
-          "asstes/images/nav_profile.svg",
+          "assets/images/nav_profile.svg",
           width: 20,
           height: 20,
           colorFilter: ColorFilter.mode(Colors.grey, BlendMode.srcIn),
